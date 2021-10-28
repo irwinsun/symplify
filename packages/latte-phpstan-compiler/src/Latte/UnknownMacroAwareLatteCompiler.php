@@ -114,11 +114,11 @@ final class UnknownMacroAwareLatteCompiler extends Compiler
         CoreMacros::install($compiler);
         BlockMacros::install($compiler);
 
-        if (class_exists('Nette\Bridges\ApplicationLatte\UIMacros')) {
+        if (class_exists(UIMacros::class)) {
             UIMacros::install($compiler);
         }
 
-        if (class_exists('Nette\Bridges\FormsLatte\FormMacros')) {
+        if (class_exists(FormMacros::class)) {
             FormMacros::install($compiler);
         }
     }

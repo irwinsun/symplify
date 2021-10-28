@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Symplify\LattePHPStanCompiler\LatteVariableCollector;
 
+use Nette\Security\User;
+use Nette\Application\UI\Presenter;
+use Nette\Application\UI\Control;
 use PHPStan\Type\ArrayType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\ObjectType;
@@ -24,11 +27,11 @@ final class DefaultTemplateVariables implements LatteVariableCollectorInterface
         $variablesAndTypes[] = new VariableAndType('basePath', new StringType());
 
         // nette\security bridge
-        $variablesAndTypes[] = new VariableAndType('user', new ObjectType('Nette\Security\User'));
+        $variablesAndTypes[] = new VariableAndType('user', new ObjectType(User::class));
 
         // nette\application bridge
-        $variablesAndTypes[] = new VariableAndType('presenter', new ObjectType('Nette\Application\UI\Presenter'));
-        $variablesAndTypes[] = new VariableAndType('control', new ObjectType('Nette\Application\UI\Control'));
+        $variablesAndTypes[] = new VariableAndType('presenter', new ObjectType(Presenter::class));
+        $variablesAndTypes[] = new VariableAndType('control', new ObjectType(Control::class));
 
         $flashesArrayType = new ArrayType(new MixedType(), new ObjectType(stdClass::class));
         $variablesAndTypes[] = new VariableAndType('flashes', $flashesArrayType);
