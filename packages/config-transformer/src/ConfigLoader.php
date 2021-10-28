@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\ConfigTransformer;
 
+use Symplify\ConfigTransformer\DependencyInjection\Loader\IdAwareXmlFileLoader;
 use Nette\Utils\Strings;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\DelegatingLoader;
@@ -88,7 +89,7 @@ final class ConfigLoader
         throw new NotImplementedYetException($suffix);
     }
 
-    private function wrapToDelegatingLoader(Loader $loader, ContainerBuilder $containerBuilder): DelegatingLoader
+    private function wrapToDelegatingLoader(IdAwareXmlFileLoader|YamlFileLoader|PhpFileLoader $loader, ContainerBuilder $containerBuilder): DelegatingLoader
     {
         $globFileLoader = new GlobFileLoader($containerBuilder, new FileLocator());
         $phpFileLoader = new PhpFileLoader($containerBuilder, new FileLocator());
