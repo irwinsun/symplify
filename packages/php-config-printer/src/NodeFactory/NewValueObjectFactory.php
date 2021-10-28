@@ -33,7 +33,7 @@ final class NewValueObjectFactory
     /**
      * @return mixed[]
      */
-    private function resolvePropertyValuesFromValueObject(string $valueObjectClass, object $valueObject): array
+    private function resolvePropertyValuesFromValueObject(string $valueObjectClass, Enum $enum): array
     {
         $reflectionClass = new ReflectionClass($valueObjectClass);
         $propertyValues = [];
@@ -41,7 +41,7 @@ final class NewValueObjectFactory
             $reflectionProperty->setAccessible(true);
 
             $defaultPropertyValue = $reflectionProperty->getDefaultValue();
-            $currentPropertyValue = $reflectionProperty->getValue($valueObject);
+            $currentPropertyValue = $reflectionProperty->getValue($enum);
 
             // do not fill in default values
             if ($defaultPropertyValue === $currentPropertyValue) {
