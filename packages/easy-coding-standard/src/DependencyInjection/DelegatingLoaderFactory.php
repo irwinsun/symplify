@@ -26,7 +26,7 @@ final class DelegatingLoaderFactory
 
     private function createFromContainerBuilderAndFileLocator(
         ContainerBuilder $containerBuilder,
-        SimpleFileLocator $simpleFileLocator
+        \Symfony\Component\HttpKernel\Config\FileLocator $simpleFileLocator
     ): DelegatingLoader {
         $loaders = [
             new GlobFileLoader($simpleFileLocator),

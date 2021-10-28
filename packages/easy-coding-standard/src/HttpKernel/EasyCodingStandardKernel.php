@@ -76,9 +76,6 @@ final class EasyCodingStandardKernel extends AbstractSymplifyKernel
         parent::prepareContainer($containerBuilder);
     }
 
-    /**
-     * @param ContainerInterface|ContainerBuilder $container
-     */
     protected function getContainerLoader(ContainerInterface $container): DelegatingLoader
     {
         $delegatingLoaderFactory = new DelegatingLoaderFactory();

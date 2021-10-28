@@ -61,7 +61,7 @@ final class IndentationTest extends AbstractKernelTestCase
         $this->assertEquals($whitespacesFixerConfig, $fixerWhitespaceConfig);
     }
 
-    private function getIndentationTypeFixerFromContainer(ContainerInterface $container): IndentationTypeFixer
+    private function getIndentationTypeFixerFromContainer(?\Symfony\Component\DependencyInjection\ContainerInterface $container): IndentationTypeFixer
     {
         $fixerFileProcessor = $container->get(FixerFileProcessor::class);
         $checkers = $fixerFileProcessor->getCheckers();
