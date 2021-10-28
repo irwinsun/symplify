@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 namespace Symplify\PHPStanRules\Rules;
 
+use PhpParser\Node\Expr\Closure;
+use PhpParser\Node\Stmt\ClassMethod;
+use PhpParser\Node\Stmt\For_;
+use PhpParser\Node\Stmt\Foreach_;
+use PhpParser\Node\Stmt\Function_;
+use PhpParser\Node\Stmt\If_;
+use PhpParser\Node\Stmt\While_;
 use Nette\Utils\Strings;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
@@ -116,7 +123,7 @@ CODE_SAMPLE
     /**
      * @return ArrayDimFetch[]
      */
-    private function findVariableArrayDimFetches(Node $node, Variable $variable): array
+    private function findVariableArrayDimFetches(Closure|ClassMethod|For_|Foreach_|Function_|If_|While_ $node, Variable $variable): array
     {
         $variableName = $this->simpleNameResolver->getName($variable);
         if ($variableName === null) {

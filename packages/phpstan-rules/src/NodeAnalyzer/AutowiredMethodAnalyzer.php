@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\PHPStanRules\NodeAnalyzer;
 
+use Nette\DI\Attributes\Inject;
 use Nette\Utils\Strings;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Stmt\ClassMethod;
@@ -28,11 +29,11 @@ final class AutowiredMethodAnalyzer
     {
         $docComment = $stmt->getDocComment();
         if (! $docComment instanceof Doc) {
-            return $this->hasAttributes($stmt, [Required::class, 'Nette\DI\Attributes\Inject']);
+            return $this->hasAttributes($stmt, [Required::class, Inject::class]);
         }
 
         if (! (bool) Strings::match($docComment->getText(), self::REQUIRED_DOCBLOCK_REGEX)) {
-            return $this->hasAttributes($stmt, [Required::class, 'Nette\DI\Attributes\Inject']);
+            return $this->hasAttributes($stmt, [Required::class, Inject::class]);
         }
 
         return true;
