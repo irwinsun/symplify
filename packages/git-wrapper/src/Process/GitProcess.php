@@ -109,7 +109,7 @@ final class GitProcess extends Process
         return $cwd;
     }
 
-    private function dispatchEvent(Event $event): void
+    private function dispatchEvent(GitPrepareEvent|GitBypassEvent|GitSuccessEvent|GitErrorEvent $event): void
     {
         $eventDispatcher = $this->gitWrapper->getDispatcher();
         $eventDispatcher->dispatch($event);
