@@ -13,31 +13,31 @@ final class GitCommit
     /**
      * @var string
      */
-    private $hash;
+    private string $hash;
 
     /**
      * @var string
      */
-    private $author;
+    private string $author;
 
     private DateTimeImmutable $authorDate;
 
     /**
      * @var string
      */
-    private $committer;
+    private string $committer;
 
     private DateTimeImmutable $committerDate;
 
     /**
      * @var string
      */
-    private $subject;
+    private string $subject;
 
     /**
      * @var string
      */
-    private $body;
+    private string $body;
 
     public function __construct(array $data)
     {
