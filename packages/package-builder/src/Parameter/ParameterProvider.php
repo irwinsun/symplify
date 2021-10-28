@@ -19,9 +19,6 @@ final class ParameterProvider
      */
     private $parameters = [];
 
-    /**
-     * @param Container|ContainerInterface $container
-     */
     public function __construct(ContainerInterface $container)
     {
         $parameterBag = $container->getParameterBag();
